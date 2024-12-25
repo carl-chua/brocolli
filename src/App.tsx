@@ -1,22 +1,20 @@
-import { useState } from 'react';
-import './App.css';
-import { Button } from './components/shadcn/button';
-import { InviteDialog } from './components/ui/invite-dialog';
+import { Route, Routes } from 'react-router-dom';
+import { Footer } from './components/ui/footer';
+import { Navbar } from './components/ui/navbar';
+import { HomePage } from './pages/HomePage';
 
 function App() {
-  const [showDialog, setShowDialog] = useState(false);
-
   return (
-    <>
-      <div className="flex flex-col items-center gap-y-4">
-        <Button onClick={() => setShowDialog(true)}>Request an Invite</Button>
+    <div className="w-full min-h-screen flex flex-col bg-secondary">
+      <Navbar />
 
-        {/* conditionally render the dialog to reset after submission*/}
-        {showDialog && (
-          <InviteDialog showDialog={showDialog} setShowDialog={setShowDialog} />
-        )}
-      </div>
-    </>
+      <Routes>
+        <Route path="/brocolli" element={<HomePage />}></Route>
+        <Route path="*" element={<HomePage />}></Route>
+      </Routes>
+
+      <Footer />
+    </div>
   );
 }
 
