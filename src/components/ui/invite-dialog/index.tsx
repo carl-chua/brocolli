@@ -57,9 +57,11 @@ export const InviteDialog = ({
       await requestInvite(fullName, email);
       setIsSuccess(true);
     } catch (err) {
-      setError(
-        (err as { errorMessage?: string })?.errorMessage || 'An error occurred'
-      );
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
     }
     setIsLoading(false);
   };
@@ -136,6 +138,7 @@ export const InviteDialog = ({
 
               <DialogFooter>
                 <Button
+                  id="send-button"
                   type="submit"
                   onClick={handleSend}
                   className="w-full"

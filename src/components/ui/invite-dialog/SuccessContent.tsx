@@ -18,7 +18,7 @@ export const SuccessContent = () => {
       </DialogHeader>
       <DialogFooter>
         <DialogClose asChild>
-          <Button type="button" className="w-full">
+          <Button id="success-button" type="button" className="w-full">
             Ok
           </Button>
         </DialogClose>

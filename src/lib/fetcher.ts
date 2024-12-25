@@ -24,17 +24,12 @@ export const fetcher = async ({
     body: body ? JSON.stringify(body) : undefined,
   };
 
-  try {
-    const response = await fetch(url, options);
-    const data = await response.json();
+  const response = await fetch(url, options);
+  const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data);
-    }
-    return data;
-  } catch (error) {
-    // Log error to monitoring system
-    console.error('Fetch error:', error);
-    throw error;
+  if (!response.ok) {
+    throw new Error(data?.errorMessage || 'An error occurred');
   }
+
+  return data;
 };

@@ -22,7 +22,12 @@ export const ErrorContent = ({
         <DialogDescription>{message}</DialogDescription>
       </DialogHeader>
       <DialogFooter>
-        <Button type="button" onClick={handleErrorClick} className="w-full">
+        <Button
+          id="error-button"
+          type="button"
+          onClick={handleErrorClick}
+          className="w-full"
+        >
           Ok
         </Button>
       </DialogFooter>

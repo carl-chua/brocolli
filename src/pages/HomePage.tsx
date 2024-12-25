@@ -15,7 +15,11 @@ export const HomePage = () => {
         <p className="text-base md:text-lg text-slate-700 mb-8">
           Be the first to know when we launch.
         </p>
-        <Button onClick={() => setShowDialog(true)} className="p-6 text-lg">
+        <Button
+          id="request-invite-button"
+          onClick={() => setShowDialog(true)}
+          className="p-6 text-lg"
+        >
           Request an Invite
         </Button>
       </div>
