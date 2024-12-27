@@ -10,7 +10,7 @@
     "cy:open": "cypress open",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
