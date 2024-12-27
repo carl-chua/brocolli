@@ -71,4 +71,25 @@ describe('Request Invite Desktop', () => {
     cy.get('#success-button').should('be.visible');
     cy.get('#success-button').click();
   });
+
+  it('should show input validation', () => {
+    cy.get('#request-invite-button').click();
+
+    cy.get('input#full-name').type('Jo').blur();
+    cy.contains('Name must be at least 3 characters long').should('be.visible');
+    cy.get('input#full-name').type('hn Doe');
+
+    cy.get('input#email').type('john.doe@example').blur();
+    cy.contains('Email is not valid').should('be.visible');
+    cy.get('input#email').type('.com');
+
+    cy.get('input#confirm-email').type('john.doe@example').blur();
+    cy.contains('Emails do not match').should('be.visible');
+    cy.get('input#confirm-email').type('.com');
+    cy.get('#send-button').click();
+
+    cy.contains('Invite Sent!').should('be.visible');
+    cy.contains('Please check your email for the invite.').should('be.visible');
+    cy.get('#success-button').should('be.visible');
+  });
 });
