@@ -13,3 +13,4 @@ Open this link for information on how to
 - Run Locally
 - Run Unit Test
 - Run E2E Test
+- Build
