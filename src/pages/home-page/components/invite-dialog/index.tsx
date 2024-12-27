@@ -88,7 +88,7 @@ export const InviteDialog = () => {
                 />
 
                 {enableNameMessage && nameMessage && (
-                  <div className="text-red-500 text-xs">{nameMessage}</div>
+                  <div className="text-xs text-red-500">{nameMessage}</div>
                 )}
               </div>
 
@@ -104,7 +104,7 @@ export const InviteDialog = () => {
                 />
 
                 {enableEmailMessage && emailMessage && (
-                  <div className="text-red-500 text-xs">{emailMessage}</div>
+                  <div className="text-xs text-red-500">{emailMessage}</div>
                 )}
               </div>
 
@@ -120,7 +120,7 @@ export const InviteDialog = () => {
                 />
 
                 {enableConfirmEmailMessage && confirmEmailMessage && (
-                  <div className="text-red-500 text-xs">
+                  <div className="text-xs text-red-500">
                     {confirmEmailMessage}
                   </div>
                 )}

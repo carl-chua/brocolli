@@ -5,7 +5,7 @@ import { HomePage } from './pages/home-page';
 
 function App() {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-secondary">
+    <div className="flex min-h-screen w-full flex-col bg-secondary">
       <Navbar />
 
       <Routes>

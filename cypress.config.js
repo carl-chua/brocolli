@@ -1,6 +1,6 @@
-const { defineConfig } = require('cypress');
+import { defineConfig } from 'cypress';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:5173', // Adjust the base URL to match your Vite dev server
   },

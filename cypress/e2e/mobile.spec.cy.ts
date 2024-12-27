@@ -1,5 +1,6 @@
-describe('Request Invite Desktop', () => {
+describe('Request Invite Mobile', () => {
   beforeEach(() => {
+    cy.viewport('iphone-x'); // Set the viewport to iPhone X dimensions
     cy.visit('/');
   });
 

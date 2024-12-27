@@ -7,7 +7,7 @@ export const HomePage = () => {
   const showDialog = useAtomValue(showDialogAtom);
 
   return (
-    <div className=" w-full flex flex-grow flex-col items-center justify-center gap-y-4 max-w-7xl mx-auto">
+    <div className="mx-auto flex w-full max-w-7xl flex-grow flex-col items-center justify-center gap-y-4">
       <HeroSection />
 
       {/* Conditionally render the dialog to reset after submission */}
