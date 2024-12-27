@@ -2,10 +2,7 @@ import { Button } from '@/components/shadcn/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
 } from '@/components/shadcn/dialog';
 import { Input } from '@/components/shadcn/input';
 import { Label } from '@/components/shadcn/label';
@@ -15,20 +12,17 @@ import {
   validateEmail,
   validateName,
 } from '@/lib/validate';
+import { useAtom } from 'jotai';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { showDialogAtom } from '../../store';
 import { ErrorContent } from './ErrorContent';
+import { MemoizedHeaderContent } from './HeaderContent';
 import { SuccessContent } from './SuccessContent';
 
-interface InviteDialogProps {
-  showDialog: boolean;
-  setShowDialog: (showDialog: boolean) => void;
-}
+export const InviteDialog = () => {
+  const [showDialog, setShowDialog] = useAtom(showDialogAtom);
 
-export const InviteDialog = ({
-  showDialog,
-  setShowDialog,
-}: InviteDialogProps) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [confirmEmail, setConfirmEmail] = useState('');
@@ -78,13 +72,9 @@ export const InviteDialog = ({
       <DialogContent className="sm:max-w-[425px]">
         {!isSuccess && !error && (
           <>
-            <DialogHeader>
-              <DialogTitle>Request an Invite</DialogTitle>
-              <DialogDescription>
-                Please fill in the form below to request an invite. We will
-                review your request and get back to you as soon as possible.
-              </DialogDescription>
-            </DialogHeader>
+            <MemoizedHeaderContent />
+
+            {/* Optimsation: input can be memoized to prevent excessive rerenders*/}
             <div className="grid w-full items-center gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="full-name">Full Name</Label>

@@ -36,6 +36,10 @@ test('invalidates an email without domain', () => {
   expect(validateEmail('test@')).toBe('Email is not valid');
 });
 
+test('invalidates an email with space', () => {
+  expect(validateEmail('test @example.com')).toBe('Email is not valid');
+});
+
 test('validates matching emails', () => {
   expect(validateConfirmEmail('test@example.com', 'test@example.com')).toBe(
     null
