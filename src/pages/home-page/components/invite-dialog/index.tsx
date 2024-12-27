@@ -46,10 +46,13 @@ export const InviteDialog = () => {
 
   const handleSend = async () => {
     setIsLoading(true);
-
     try {
-      await requestInvite(fullName, email);
-      setIsSuccess(true);
+      const res = await requestInvite(fullName, email);
+      if (res === 'Registered') {
+        setIsSuccess(true);
+      } else {
+        setError('An unknown error occurred');
+      }
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
