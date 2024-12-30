@@ -14,7 +14,7 @@ interface ErrorContentProps {
 export const ErrorContent = ({
   message,
   handleErrorClick,
-}: ErrorContentProps) => {
+}: ErrorContentProps): JSX.Element => {
   return (
     <>
       <DialogHeader>

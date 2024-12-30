@@ -5,7 +5,7 @@ import {
 } from '@/components/shadcn/dialog';
 import { memo } from 'react';
 
-const HeaderContent = () => (
+const HeaderContent = (): JSX.Element => (
   <DialogHeader>
     <DialogTitle>Request an Invite</DialogTitle>
     <DialogDescription>

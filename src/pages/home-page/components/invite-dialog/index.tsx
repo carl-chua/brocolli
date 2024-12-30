@@ -4,8 +4,6 @@ import {
   DialogContent,
   DialogFooter,
 } from '@/components/shadcn/dialog';
-import { Input } from '@/components/shadcn/input';
-import { Label } from '@/components/shadcn/label';
 import { requestInvite } from '@/lib/api';
 import {
   validateConfirmEmail,
@@ -18,6 +16,7 @@ import { useState } from 'react';
 import { showDialogAtom } from '../../store';
 import { ErrorContent } from './ErrorContent';
 import { MemoizedHeaderContent } from './HeaderContent';
+import { MemoizedInputField } from './InputField';
 import { SuccessContent } from './SuccessContent';
 
 export const InviteDialog = () => {
@@ -77,57 +76,38 @@ export const InviteDialog = () => {
           <>
             <MemoizedHeaderContent />
 
-            {/* Optimsation: input can be memoized to prevent excessive rerenders*/}
             <div className="grid w-full items-center gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="full-name">Full Name</Label>
-                <Input
-                  type="text"
-                  id="full-name"
-                  placeholder="Carl Chua"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  onBlur={() => setEnableNameMessage(true)}
-                />
+              <MemoizedInputField
+                id="full-name"
+                type="text"
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(event) => setFullName(event.target.value)}
+                onBlur={() => setEnableNameMessage(true)}
+                errorMessage={enableNameMessage ? nameMessage : undefined}
+              />
 
-                {enableNameMessage && nameMessage && (
-                  <div className="text-xs text-red-500">{nameMessage}</div>
-                )}
-              </div>
+              <MemoizedInputField
+                id="email"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                onBlur={() => setEnableEmailMessage(true)}
+                errorMessage={enableEmailMessage ? emailMessage : undefined}
+              />
 
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  type="email"
-                  id="email"
-                  placeholder="carl.chua@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onBlur={() => setEnableEmailMessage(true)}
-                />
-
-                {enableEmailMessage && emailMessage && (
-                  <div className="text-xs text-red-500">{emailMessage}</div>
-                )}
-              </div>
-
-              <div className="grid gap-2">
-                <Label htmlFor="confirm-email">Confirm Email</Label>
-                <Input
-                  type="email"
-                  id="confirm-email"
-                  placeholder="Re-enter your email"
-                  value={confirmEmail}
-                  onChange={(e) => setConfirmEmail(e.target.value)}
-                  onBlur={() => setEnableConfirmEmailMessage(true)}
-                />
-
-                {enableConfirmEmailMessage && confirmEmailMessage && (
-                  <div className="text-xs text-red-500">
-                    {confirmEmailMessage}
-                  </div>
-                )}
-              </div>
+              <MemoizedInputField
+                id="confirm-email"
+                type="email"
+                placeholder="Confirm Email"
+                value={confirmEmail}
+                onChange={(event) => setConfirmEmail(event.target.value)}
+                onBlur={() => setEnableConfirmEmailMessage(true)}
+                errorMessage={
+                  enableConfirmEmailMessage ? confirmEmailMessage : undefined
+                }
+              />
 
               <DialogFooter>
                 <Button

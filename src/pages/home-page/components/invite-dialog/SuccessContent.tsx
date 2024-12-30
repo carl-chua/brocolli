@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from '@/components/shadcn/dialog';
 
-export const SuccessContent = () => {
+export const SuccessContent = (): JSX.Element => {
   return (
     <>
       <DialogHeader>
